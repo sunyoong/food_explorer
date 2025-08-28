@@ -1,0 +1,15 @@
+<!doctype html>
+    <html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>입력 페이지</title>
+    </head>
+    <body>
+        <form method="get" action="/submit/">
+            {% csrf_token %}
+            <label>텍스트를 입력하세요: </label>
+            <input type="text" name="inputText">
+            <button type="submit">확인</button>
+        </form>
+    </body>
+    </html>

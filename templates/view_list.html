@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>결과 페이지</title>
+</head>
+<body>
+	<!-- 표시할 영양성분 : foodNm(식품명), typeNm(데이터구분명), foodOriginNm(식품기원명), foodLv3Nm(식품대분류명), nutConSrtrQua(영양성분함량기준량)
+	 enerc(에너지(kcal)), water(수분(g)), prot(단백질(g)), fatce(지방(g)), ash(회분(g)), 
+	 chocdf(탄수화물(g)), sugar(당류), fibtg(식이섬유(g)),...
+	  -->
+  <h1>{{ food_name }} 영양성분</h1>
+  <p>{{ food_info }}</p>
+ 
+  <table>
+  {% for key, value in food_info %}
+	<tr>
+		<td>
+			{{ key }}
+		</td> 
+		<td>
+			{{ value }}
+		</td>
+	</tr>
+  {% endfor %}
+  </table>
+</body>
+</html>
