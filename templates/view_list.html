@@ -9,8 +9,13 @@
 	 enerc(에너지(kcal)), water(수분(g)), prot(단백질(g)), fatce(지방(g)), ash(회분(g)), 
 	 chocdf(탄수화물(g)), sugar(당류), fibtg(식이섬유(g)),...
 	  -->
-  <h1>{{ food_name }} 영양성분</h1>
-  <p>{{ food_info }}</p>
+	{% if food_info == None %}
+	  <p>데이터가 없습니다</p>
+	{% else %}
+		<h1>{{ food_name }} 영양성분</h1>
+  		<p>{{ food_info }}</p>
+  {% endif %}
+	
  
   <table>
   {% for key, value in food_info %}

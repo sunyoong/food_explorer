@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('submit/', views.do_post),
+    path('login/', views.login),
+    path('submit/', views.get_food_info),
 ]

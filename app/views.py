@@ -6,18 +6,24 @@ import requests, urllib, json
 def index(request):
     return render(request, 'index.html')
     
+def login(request):
+    return render(request, 'login.html')
+
 def get_food_info(request):
     if request.method == "GET":
-        text = request.POST.get('inputText')
+        text = request.GET.get('inputText')
         # pub_api_info 가져오기 
         food_info = get_pub_api_info(text)
+        food_info_result = None
+        food_name = None
         
         # 데이터 가공 
-        
-        food_name = "" 
+        print('food intfo : %s' % food_info)
         if food_info is not None:
             food_name = food_info['foodNm']
-        return render(request, 'view_list.html', {'food_info': food_info.items(), 'food_name': food_name})
+            food_info_result = food_info.items()
+            
+        return render(request, 'view_list.html', {'food_info': food_info_result, 'food_name': food_name})
     return render(request, 'view_list.html', {'user_input': 'POST 아님'})
 
 def get_pub_api_info(input_text):
@@ -32,7 +38,6 @@ def get_pub_api_info(input_text):
     
     # body > item 들을 가져온다. items = list() 형태
     items = json_data['response']['body']['items']
-    
     # loop을 돌면서 input_text와 동일한 정보의 데이터를 가져온다. 
     # # 제공할 정보 : 음식이름(foodNm), 음식분류(foddLv3Nm)
     result = None
